@@ -1,5 +1,5 @@
-﻿<div align="center">
-  <h1>� ECG Arrhythmia Classification using Class-Conditional Graph Autoencoders</h1>
+ï»¿<div align="center">
+  <h1>å ECG Arrhythmia Classification using Class-Conditional Graph Autoencoders</h1>
   
   [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
   [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
@@ -8,38 +8,38 @@
   
   **A deep learning pipeline for real-time ECG arrhythmia detection combining CNN, Graph Neural Networks, and conditional generation.**
   
-  [Key Features](#-key-features) • [Results](#-results) • [Architecture](#️-architecture) • [Installation](#️-installation) • [Usage](#-usage) • [Documentation](#-documentation)
+  [Key Features](#-key-features) â¢ [Results](#-results) â¢ [Architecture](#ïž-architecture) â¢ [Installation](#ïž-installation) â¢ [Usage](#-usage) â¢ [Documentation](#-documentation)
 </div>
 
 ---
 
-## � Project Overview
+## ¯ Project Overview
 
 Built a **production-ready ECG classification system** achieving **96%+ accuracy** on MIT-BIH Arrhythmia Database using a novel Class-Conditional Graph Autoencoder architecture.
 
-### � What Makes This Special?
+### à What Makes This Special?
 
 | Feature | Description | Impact |
 |---------|-------------|---------|
-| **Graph Neural Networks** | Leverages relationships between similar heartbeats using k-NN graphs | +3.2% accuracy |
+| **Graph Neural Networks** | Leverages relationships between similar heartbeats using k-NN graphs | 96% accuracy |
 | **Class-Conditional Decoder** | Reconstructs waveforms with class-specific patterns | Better interpretability |
 | **Joint Optimization** | Learns reconstruction + classification together | More robust features |
 | **Real-time Inference** | < 10ms per prediction on CPU | Production-ready |
 
 ---
 
-## � Key Features
+##  Key Features
 
-✅ **Deep Learning Pipeline**: End-to-end training on 87K+ ECG samples  
-✅ **Graph-Based Architecture**: k-NN graphs capture sample relationships  
-✅ **Multi-Task Learning**: Simultaneous reconstruction + classification  
-✅ **Interactive Visualizations**: t-SNE, ROC curves, confusion matrices  
-✅ **Deployment Ready**: Exportable to ONNX for production use  
-✅ **Comprehensive Documentation**: Step-by-step notebooks with detailed explanations  
+â **Deep Learning Pipeline**: End-to-end training on 87K+ ECG samples  
+â **Graph-Based Architecture**: k-NN graphs capture sample relationships  
+â **Multi-Task Learning**: Simultaneous reconstruction + classification  
+â **Interactive Visualizations**: t-SNE, ROC curves, confusion matrices  
+â **Deployment Ready**: Exportable to ONNX for production use  
+â **Comprehensive Documentation**: Step-by-step notebooks with detailed explanations  
 
 ---
 
-## � Results
+## Ê Results
 
 ### Performance Metrics
 
@@ -51,32 +51,32 @@ Built a **production-ready ECG classification system** achieving **96%+ accuracy
 | **Inference Time** | < 10ms (CPU) |
 
 **Per-Class Performance:**
-- ✅ Normal (N): 99%+ accuracy
-- ✅ Supraventricular (S): 94%+ accuracy  
-- ✅ Ventricular (V): 97%+ accuracy
-- ✅ Fusion (F): 89%+ accuracy
-- ✅ Unknown (Q): 92%+ accuracy
+- â Normal (N): 99%+ accuracy
+- â Supraventricular (S): 94%+ accuracy  
+- â Ventricular (V): 97%+ accuracy
+- â Fusion (F): 89%+ accuracy
+- â Unknown (Q): 92%+ accuracy
 
 ---
 
-## � Architecture
+## × Architecture
 
 **Pipeline:**
 \`\`\`
 ECG Waveform (187 samples)
-    ↓
-CNN Encoder (3 conv layers) → 128D features
-    ↓
+    â
+CNN Encoder (3 conv layers) â 128D features
+    â
 k-NN Graph Construction (k=5 neighbors)
-    ↓
-GCN Encoder (2 layers) → Graph-aware latent space
-    ↓
-    ┌─────────────────┬──────────────────┐
-    │  Classifier     │  Class-Cond.     │
-    │  (predict)      │  Decoder         │
-    │     ↓           │     ↓            │
-    │  5 classes      │  Reconstruction  │
-    └─────────────────┴──────────────────┘
+    â
+GCN Encoder (2 layers) â Graph-aware latent space
+    â
+    âââââââââââââââââââ¬âââââââââââââââââââ
+    â  Classifier     â  Class-Cond.     â
+    â  (predict)      â  Decoder         â
+    â     â           â     â            â
+    â  5 classes      â  Reconstruction  â
+    âââââââââââââââââââŽâââââââââââââââââââ
 \`\`\`
 
 **Key Components:**
@@ -103,12 +103,12 @@ Builds k-NN graphs to capture **sample relationships**:
 ### 3. Multi-Objective Optimization
 Joint loss function balances three objectives:
 \`\`\`
-L_total = L_reconstruction + λ₁ × L_classification + λ₂ × L_graph
+L_total = L_reconstruction + Î»â Ã L_classification + Î»â Ã L_graph
 \`\`\`
 
 ---
 
-## � Installation
+## à Installation
 
 ### Prerequisites
 - Python 3.8+
@@ -129,7 +129,7 @@ python scripts/download_data.py
 
 ---
 
-## � Usage
+## Ú Usage
 
 ### Python Scripts
 
@@ -193,7 +193,7 @@ python src/evaluate.py --model models/best_model.pth --test-data data/mitbih_tes
 
 ---
 
-## � Dataset
+## Ê Dataset
 
 **MIT-BIH Arrhythmia Database**
 - **Source**: [PhysioNet](https://physionet.org/content/mitdb/1.0.0/)
@@ -214,27 +214,27 @@ python src/evaluate.py --model models/best_model.pth --test-data data/mitbih_tes
 
 ---
 
-## � Technical Skills Demonstrated
+##  Technical Skills Demonstrated
 
 ### Machine Learning & AI
-- ✅ Deep Learning (PyTorch)
-- ✅ Graph Neural Networks (PyTorch Geometric)
-- ✅ Convolutional Neural Networks (1D CNN)
-- ✅ Autoencoders & Representation Learning
-- ✅ Multi-Task Learning
-- ✅ Class Imbalance Handling
+- â Deep Learning (PyTorch)
+- â Graph Neural Networks (PyTorch Geometric)
+- â Convolutional Neural Networks (1D CNN)
+- â Autoencoders & Representation Learning
+- â Multi-Task Learning
+- â Class Imbalance Handling
 
 ### Data Science
-- ✅ Exploratory Data Analysis (EDA)
-- ✅ Feature Engineering
-- ✅ Model Evaluation & Validation
-- ✅ Statistical Analysis
-- ✅ Data Visualization (Matplotlib, Plotly)
-- ✅ Time Series Analysis
+- â Exploratory Data Analysis (EDA)
+- â Feature Engineering
+- â Model Evaluation & Validation
+- â Statistical Analysis
+- â Data Visualization (Matplotlib, Plotly)
+- â Time Series Analysis
 
 ---
 
-## � Documentation
+## Ö Documentation
 
 - **[Methodology](docs/METHODOLOGY.md)**: Detailed explanation of algorithms and mathematical foundations
 - **[API Reference](docs/API.md)**: Code usage guide and function documentation
@@ -251,7 +251,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 ---
 
-## � License
+## Ä License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
@@ -265,12 +265,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## ⭐ Star This Repository
+## â­ Star This Repository
 
 If you find this project useful, please consider giving it a star! It helps others discover this work and motivates continued development.
 
 ---
 
 <div align="center">
-  <sub>Built with ❤️ using PyTorch and Graph Neural Networks for Healthcare AI</sub>
+  <sub>Built with â€ïž using PyTorch and Graph Neural Networks for Healthcare AI</sub>
 </div>
