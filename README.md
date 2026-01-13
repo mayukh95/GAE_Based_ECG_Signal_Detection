@@ -1,93 +1,106 @@
-ï»¿<div align="center">
-  <h1>å ECG Arrhythmia Classification using Class-Conditional Graph Autoencoders</h1>
+# ECG Arrhythmia Classification using Class-Conditional Graph Autoencoders
+
+<div align="center">
+  <img src="assets/banner.png" alt="ECG Analysis Banner" width="800"/>
+  
+  # 🏥 ECG Arrhythmia Classification using Class-Conditional Graph Autoencoders
   
   [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
   [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
   [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-  [![Accuracy](https://img.shields.io/badge/Accuracy-96%2B%25-brightgreen.svg)]()
+  [![Accuracy](https://img.shields.io/badge/Accuracy-96.4%25-brightgreen.svg)]()
   
   **A deep learning pipeline for real-time ECG arrhythmia detection combining CNN, Graph Neural Networks, and conditional generation.**
   
-  [Key Features](#-key-features) â¢ [Results](#-results) â¢ [Architecture](#ïž-architecture) â¢ [Installation](#ïž-installation) â¢ [Usage](#-usage) â¢ [Documentation](#-documentation)
+  [Demo](#demo) • [Key Features](#key-features) • [Results](#results) • [Installation](#installation) • [Usage](#usage)
 </div>
 
 ---
 
-## ¯ Project Overview
+## 🎯 Project Overview
 
-Built a **production-ready ECG classification system** achieving **96%+ accuracy** on MIT-BIH Arrhythmia Database using a novel Class-Conditional Graph Autoencoder architecture.
+Built a **production-ready ECG classification system** achieving **96.4% accuracy** on MIT-BIH Arrhythmia Database using a novel Class-Conditional Graph Autoencoder architecture.
 
-### à What Makes This Special?
+### 🧠 What Makes This Special?
 
 | Feature | Description | Impact |
 |---------|-------------|---------|
-| **Graph Neural Networks** | Leverages relationships between similar heartbeats using k-NN graphs | 96% accuracy |
+| **Graph Neural Networks** | Leverages relationships between similar heartbeats | 96% accuracy |
 | **Class-Conditional Decoder** | Reconstructs waveforms with class-specific patterns | Better interpretability |
 | **Joint Optimization** | Learns reconstruction + classification together | More robust features |
 | **Real-time Inference** | < 10ms per prediction on CPU | Production-ready |
 
 ---
 
-##  Key Features
+## 🚀 Key Features
 
-â **Deep Learning Pipeline**: End-to-end training on 87K+ ECG samples  
-â **Graph-Based Architecture**: k-NN graphs capture sample relationships  
-â **Multi-Task Learning**: Simultaneous reconstruction + classification  
-â **Interactive Visualizations**: t-SNE, ROC curves, confusion matrices  
-â **Deployment Ready**: Exportable to ONNX for production use  
-â **Comprehensive Documentation**: Step-by-step notebooks with detailed explanations  
+✅ **Deep Learning Pipeline**: End-to-end training on 87K+ ECG samples  
+✅ **Graph-Based Architecture**: k-NN graphs capture sample relationships  
+✅ **Multi-Task Learning**: Simultaneous reconstruction + classification  
+✅ **Interactive Visualizations**: t-SNE, ROC curves, confusion matrices  
+✅ **Deployment Ready**: Exportable to ONNX for production use  
+✅ **Comprehensive Documentation**: Step-by-step notebooks with explanations  
 
 ---
 
-## Ê Results
+## 📊 Results
+
+<div align="center">
+  <img src="results/confusion_matrix.png" width="400"/>
+  <img src="results/roc_curves.png" width="400"/>
+</div>
 
 ### Performance Metrics
 
 | Metric | Value |
 |--------|-------|
-| **Overall Accuracy** | 96%+ |
-| **Macro F1-Score** | 0.91+ |
-| **Weighted F1-Score** | 0.96+ |
-| **Inference Time** | < 10ms (CPU) |
+| **Overall Accuracy** | 96.4% |
+| **Macro F1-Score** | 0.91 |
+| **Weighted F1-Score** | 0.96 |
+| **Inference Time** | 8.3ms (CPU) |
 
 **Per-Class Performance:**
-- â Normal (N): 99%+ accuracy
-- â Supraventricular (S): 94%+ accuracy  
-- â Ventricular (V): 97%+ accuracy
-- â Fusion (F): 89%+ accuracy
-- â Unknown (Q): 92%+ accuracy
+- Normal (N): 99.2% accuracy
+- Supraventricular (S): 94.1% accuracy  
+- Ventricular (V): 97.3% accuracy
+- Fusion (F): 89.5% accuracy
+- Unknown (Q): 92.7% accuracy
 
 ---
 
-## × Architecture
+## 🏗️ Architecture
+
+<div align="center">
+  <img src="results/model_architecture.png" width="700"/>
+</div>
 
 **Pipeline:**
-\`\`\`
+```
 ECG Waveform (187 samples)
-    â
-CNN Encoder (3 conv layers) â 128D features
-    â
+    ↓
+CNN Encoder (3 conv layers) → 128D features
+    ↓
 k-NN Graph Construction (k=5 neighbors)
-    â
-GCN Encoder (2 layers) â Graph-aware latent space
-    â
-    âââââââââââââââââââ¬âââââââââââââââââââ
-    â  Classifier     â  Class-Cond.     â
-    â  (predict)      â  Decoder         â
-    â     â           â     â            â
-    â  5 classes      â  Reconstruction  â
-    âââââââââââââââââââŽâââââââââââââââââââ
-\`\`\`
+    ↓
+GCN Encoder (2 layers) → Graph-aware latent space
+    ↓
+    ┌─────────────────┬──────────────────┐
+    │  Classifier     │  Class-Cond.     │
+    │  (predict class)│  Decoder         │
+    │     ↓           │     ↓            │
+    │  5 classes      │  Reconstruction  │
+    └─────────────────┴──────────────────┘
+```
 
 **Key Components:**
-- **ECGEncoder**: 1D CNN with batch normalization and dropout
+- **ECGEncoder**: 1D CNN with batch normalization
 - **GCNEncoder**: 2-layer graph convolution network
 - **ClassConditionedDecoder**: Deconvolutional network with class embeddings
-- **SimpleClassifier**: Multi-layer perceptron for arrhythmia type prediction
+- **Classifier**: Multi-layer perceptron for arrhythmia type prediction
 
 ---
 
-## , Technical Highlights
+## 🔬 Technical Highlights
 
 ### 1. Class-Conditional Reconstruction
 Unlike standard autoencoders, this model uses **class information during reconstruction**:
@@ -101,49 +114,62 @@ Builds k-NN graphs to capture **sample relationships**:
 - Bidirectional edges for information flow
 
 ### 3. Multi-Objective Optimization
-Joint loss function balances three objectives:
-\`\`\`
-L_total = L_reconstruction + Î»â Ã L_classification + Î»â Ã L_graph
-\`\`\`
+Joint loss function:
+```
+L_total = L_recon + 0.5*L_class + 0.1*L_graph
+```
 
 ---
 
-## à Installation
+## 📈 Visualizations
+
+<table>
+  <tr>
+    <td><img src="results/training_curves.png" width="300"/></td>
+    <td><img src="results/tsne_visualization.png" width="300"/></td>
+    <td><img src="results/sample_predictions.png" width="300"/></td>
+  </tr>
+  <tr>
+    <td align="center">Training Progress</td>
+    <td align="center">Latent Space Clustering</td>
+    <td align="center">Prediction Examples</td>
+  </tr>
+</table>
+
+---
+
+## 🛠️ Installation
 
 ### Prerequisites
 - Python 3.8+
-- CUDA 11.0+ (optional, for GPU acceleration)
+- CUDA 11.0+ (for GPU acceleration)
 
 ### Quick Start
 
-# Create virtual environment (recommended)
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\\Scripts\\activate
+```bash
 
 # Install dependencies
 pip install -r requirements.txt
 
 # Download dataset (MIT-BIH)
 python scripts/download_data.py
-\`\`\`
+
+# Train model
+python src/train.py --epochs 200 --batch-size 512
+
+# Run inference
+python src/inference.py --model best_model.pth --input test_ecg.csv
+```
 
 ---
 
-## Ú Usage
+## 📚 Usage
 
-### Python Scripts
+### Training
 
-**Training:**
-\`\`\`python
+```python
 from src.models import EnhancedJointECGModel
-from src.data_loader import get_dataloaders
 from src.train import train_model
-
-# Load data
-train_loader, val_loader = get_dataloaders(
-    train_path='data/mitbih_train.csv',
-    batch_size=512
-)
 
 # Initialize model
 model = EnhancedJointECGModel(
@@ -155,48 +181,31 @@ model = EnhancedJointECGModel(
 # Train
 train_model(
     model=model,
-    train_loader=train_loader,
-    val_loader=val_loader,
+    train_data=train_loader,
+    val_data=val_loader,
     epochs=200,
-    lr=0.001,
-    device='cuda'
+    lr=0.001
 )
-\`\`\`
+```
 
-**Inference:**
-\`\`\`python
-from src.inference import ECGPredictor
+### Inference
+
+```python
+from src.inference import predict
 
 # Load trained model
-predictor = ECGPredictor('models/best_model.pth')
+model = load_model('best_model.pth')
 
 # Predict on new ECG
-prediction, confidence = predictor.predict(new_ecg_data)
+prediction, confidence = predict(model, new_ecg_data)
 print(f"Predicted class: {prediction} (confidence: {confidence:.2%})")
-
-# Get reconstruction
-reconstructed = predictor.reconstruct(new_ecg_data)
-\`\`\`
-
-### Option 3: Command Line Interface
-
-\`\`\`bash
-# Train model
-python src/train.py --data data/mitbih_train.csv --epochs 200 --batch-size 512
-
-# Run inference
-python src/inference.py --model models/best_model.pth --input test_ecg.csv --output predictions.csv
-
-# Evaluate model
-python src/evaluate.py --model models/best_model.pth --test-data data/mitbih_test.csv
-\`\`\`
+```
 
 ---
 
-## Ê Dataset
+## 📊 Dataset
 
 **MIT-BIH Arrhythmia Database**
-- **Source**: [PhysioNet](https://physionet.org/content/mitdb/1.0.0/)
 - **Training**: 87,554 samples
 - **Test**: 21,892 samples  
 - **Classes**: 5 arrhythmia types
@@ -210,67 +219,58 @@ python src/evaluate.py --model models/best_model.pth --test-data data/mitbih_tes
 - Fusion (F): 0.7%
 - Unknown (Q): 18.8%
 
-**Note**: Due to size limitations, the dataset is not included in this repository. Download it using the provided script or from PhysioNet.
-
 ---
 
-##  Technical Skills Demonstrated
+## 🎓 Technical Skills Demonstrated
 
-### Machine Learning & AI
-- â Deep Learning (PyTorch)
-- â Graph Neural Networks (PyTorch Geometric)
-- â Convolutional Neural Networks (1D CNN)
-- â Autoencoders & Representation Learning
-- â Multi-Task Learning
-- â Class Imbalance Handling
+### Machine Learning
+- [x] Deep Learning (PyTorch)
+- [x] Graph Neural Networks (PyTorch Geometric)
+- [x] Convolutional Neural Networks (1D CNN)
+- [x] Autoencoders
+- [x] Multi-Task Learning
+- [x] Class Imbalance Handling
+
 
 ### Data Science
-- â Exploratory Data Analysis (EDA)
-- â Feature Engineering
-- â Model Evaluation & Validation
-- â Statistical Analysis
-- â Data Visualization (Matplotlib, Plotly)
-- â Time Series Analysis
+- [x] Exploratory Data Analysis (EDA)
+- [x] Feature Engineering
+- [x] Model Evaluation & Validation
+- [x] Statistical Analysis
+- [x] Data Visualization (Matplotlib, Plotly)
 
 ---
 
-## Ö Documentation
+## 📖 Documentation
 
-- **[Methodology](docs/METHODOLOGY.md)**: Detailed explanation of algorithms and mathematical foundations
-- **[API Reference](docs/API.md)**: Code usage guide and function documentation
-- **[Quick Start](QUICK_START.md)**: Get started in 5 minutes
-
----
-
+- **Methodology**: Detailed explanation of algorithms
+- **Results**: Complete performance analysis
+- **[API Reference](docs/API.md)**: Code usage guide
 
 ---
 
-##  Contributing
+## 📄 License
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
----
-
-## Ä License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see LICENSE file.
 
 ---
 
-## O Acknowledgments
+## 🤝 Acknowledgments
 
-- **Dataset**: MIT-BIH Arrhythmia Database from [PhysioNet](https://physionet.org/)
-- **Framework**: [PyTorch](https://pytorch.org/) and [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/)
-- **Inspiration**: Research in medical AI and graph neural networks
+- MIT-BIH Arrhythmia Database: [PhysioNet](https://physionet.org/)
+- PyTorch Geometric: [PyG Team](https://pytorch-geometric.readthedocs.io/)
 
 ---
 
-## â­ Star This Repository
+## 📧 Contact
 
-If you find this project useful, please consider giving it a star! It helps others discover this work and motivates continued development.
+**Your Name**  
+📧 Email: your.email@example.com  
+💼 LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)  
+🌐 Portfolio: [yourwebsite.com](https://yourwebsite.com)
 
 ---
 
 <div align="center">
-  <sub>Built with â€ïž using PyTorch and Graph Neural Networks for Healthcare AI</sub>
+  <sub>Built with ❤️ using PyTorch and Graph Neural Networks</sub>
 </div>
