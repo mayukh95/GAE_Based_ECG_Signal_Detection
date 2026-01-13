@@ -19,7 +19,6 @@ Get started with the ECG Arrhythmia Classification project in 5 minutes!
 - 🔬 [Technical Methodology](docs/METHODOLOGY.md)
 - 📊 [Performance Results](docs/RESULTS.md)
 - 💻 [API Reference](docs/API.md)
-- 📓 [Training Notebook](notebooks/training-ecg.ipynb)
 
 ---
 
@@ -46,25 +45,6 @@ print(f'Prediction: Class {pred.item()}')
 print('✓ Model works!')
 "
 ```
-
----
-
-## 📚 Explore the Notebooks (5-10 minutes)
-
-```bash
-# Start Jupyter
-jupyter notebook
-
-# Open:
-# 1. notebooks/training-ecg.ipynb - See full training pipeline
-# 2. notebooks/detection-ecg.ipynb - See inference & evaluation
-```
-
-Both notebooks have:
-- ✅ Step-by-step explanations
-- ✅ Visualizations at every stage
-- ✅ Beginner-friendly comments
-- ✅ Real examples
 
 ---
 
@@ -137,87 +117,5 @@ python src/inference.py --model models/best_model.pth --input data/test.csv
 - 🧪 **Tested & Validated:** Multiple evaluation metrics
 - 🚀 **Deployment-Ready:** ONNX export, CLI tools
 
----
-
-## 💼 For Your Resume/CV
-
-**One-Line:**
-> ECG Classification using Graph Neural Networks (96%+ accuracy) | PyTorch | [GitHub Link]
-
-**Detailed:**
-> Developed production-ready ECG arrhythmia classification system using 
-> Graph Neural Networks, achieving 96.4% accuracy on 87K+ samples.
-> Implemented novel class-conditional autoencoder architecture combining
-> CNN + GNN for multi-task learning. Built complete pipeline from data
-> processing to deployment-ready inference (<10ms latency).
->
-> Tech: PyTorch, PyTorch Geometric, Scikit-learn, Python
-> Link: github.com/YOUR_USERNAME/ECG-Arrhythmia-Classification
-
----
-
-## 🔍 What to Look For
-
-### Code Quality
-- ✅ Modular design (`src/` package)
-- ✅ Clear function names and docstrings
-- ✅ Type hints where appropriate
-- ✅ Consistent style
-
-### Documentation
-- ✅ Mathematical foundations explained
-- ✅ Architecture diagrams
-- ✅ Usage examples
-- ✅ Performance analysis
-
-### Engineering Practices
-- ✅ Version control ready (.gitignore)
-- ✅ Dependencies managed (requirements.txt)
-- ✅ Reproducible experiments
-- ✅ Command-line tools
-
----
-
-## ❓ Common Questions
-
-**Q: Can I run this without GPU?**
-> Yes! Inference takes ~8ms on CPU. Training will be slower but works.
-
-**Q: Do I need the full dataset?**
-> No! Sample data is included. Full dataset instructions in README.
-
-**Q: Is this suitable for production?**
-> Yes! Export to ONNX, wrap in FastAPI, deploy in Docker.
-
-**Q: What ML concepts does this demonstrate?**
-> Deep learning, CNNs, Graph Neural Networks, autoencoders, 
-> multi-task learning, class imbalance handling, time series.
-
----
-
-## 📞 Next Steps
-
-1. ⭐ **Star the repo** (if you found it useful!)
-2. 📖 **Read README.md** for complete overview
-3. 💻 **Try the notebooks** for interactive experience
-4. �� **Check docs/** for technical details
-
----
-
-## �� That's It!
-
-You now understand this project. 
-
-**For interviews, be ready to discuss:**
-- Why Graph Neural Networks for ECG
-- Class-conditional reconstruction approach
-- Handling 113:1 class imbalance
-- Production deployment strategy
-
-**Time to explore:** 5 minutes
-**Time to master:** 1-2 hours
-**Career impact:** Significant 🚀
-
----
 
 [Back to Main README](README.md) | [Upload to GitHub](GITHUB_UPLOAD_GUIDE.md)
